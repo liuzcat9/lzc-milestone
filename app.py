@@ -27,7 +27,7 @@ def res():
 
       # dummy bokeh
       r = requests.get('https://www.alphavantage.co/query?',
-                       params={'function': 'TIME_SERIES_DAILY', 'symbol': 'IBM', 'apikey': 'demo'})
+                       params={'function': 'TIME_SERIES_DAILY', 'symbol': stock, 'apikey': 'demo'})
       ex = r.json()
       df = pd.DataFrame.from_dict(ex["Time Series (Daily)"])
       df = df.T
