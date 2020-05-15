@@ -10,5 +10,12 @@ def index():
 def about():
   return render_template('about.html')
 
+@app.route('/res',methods = ['POST', 'GET'])
+def res():
+   if request.method == 'POST':
+      result = request.form.getlist('check')
+      print(type(result))
+      return render_template("res.html", result = result)
+
 if __name__ == '__main__':
   app.run(port=33507)
