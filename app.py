@@ -23,7 +23,6 @@ def res():
    if request.method == 'POST':
       stock = request.form.getlist('stockname')
       result = request.form.getlist('check')
-      print(type(result))
 
       # dummy bokeh
       r = requests.get('https://www.alphavantage.co/query?',
