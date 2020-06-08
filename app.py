@@ -8,7 +8,7 @@ from bokeh.plotting import figure, show
 from bokeh.models import ColumnDataSource
 from bokeh.embed import components
 
-import config
+import os
 
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def res():
 
       # bokeh using API results
       r = requests.get('https://www.alphavantage.co/query?',
-                       params={'function': 'TIME_SERIES_DAILY_ADJUSTED', 'symbol': stock, 'apikey': config.key})
+                       params={'function': 'TIME_SERIES_DAILY_ADJUSTED', 'symbol': stock, 'apikey': os.environ['ALPHA_API']})
       ex = r.json()
       df = pd.DataFrame.from_dict(ex["Time Series (Daily)"])
       df = df.T
@@ -36,8 +36,6 @@ def res():
       # convert data types in dataframe
       df.index = pd.to_datetime(df.index)
       df = df.apply(pd.to_numeric, axis=1)
-
-      df_src = ColumnDataSource(df)
 
       p = figure(plot_width=400, plot_height=400, x_axis_type='datetime', tools='pan,wheel_zoom,box_select,reset')
 
@@ -50,5 +48,3 @@ def res():
 
       return render_template("res.html", result = result, bscript = plot_script, bdiv = plot_div)
 
-if __name__ == '__main__':
-  app.run(port=33507)
