@@ -10,7 +10,7 @@
     <title>Ticker Lookup App</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <!-- Bokeh JS -->
     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-1.4.0.min.js"
@@ -22,18 +22,24 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class=" navbar-brand" href="/">Ticker Lookup App</a>
-        </div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Ticker Lookup App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% block navcontent %}
+            {% endblock %}
+        </ul>
     </div>
 </nav>
 
 <div class="col-lg-12 text-left">
     <p> Using Alpha Vantage API</p>
 
-    <div class = "container-fluid">
+    <div class="container-fluid">
         {% block content %}
         {% endblock %}
     </div>
@@ -43,7 +49,7 @@
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>

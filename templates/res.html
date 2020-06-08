@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block navcontent %}
+<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="https://www.google.com/search?q={{stockname}}&tbm=fin">Google Finance</a></li>
+{% endblock %}
+
 {% block content %}
 {{ bdiv | safe }}
 

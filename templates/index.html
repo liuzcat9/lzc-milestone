@@ -1,22 +1,39 @@
 {% extends 'base.html' %}
 
+{% block navcontent %}
+<li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
 {% block content %}
     <form action="/res" method="POST">
-        <div class="row">
+        <div class="form-group row">
             Ticker symbol: <input type="text" name="stockname" placeholder="IBM">
         </div>
-        <div class="row">
+        <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">
             <input type="checkbox" name="check" value="4. close"/> Closing price
+                </label>
         </div>
-        <div class="row">
+        <div class="form-check">
+            <label class="form-check-label">
             <input type="checkbox" name="check" value="5. adjusted close"/> Adjusted closing price
+            </label>
         </div>
-        <div class="row">
+        <div class="form-check">
+            <label class="form-check-label">
             <input type="checkbox" name="check" value="1. open"/> Opening price
+            </label>
         </div>
-        <div class="row">
+        <div class="form-check">
+            <label class="form-check-label">
             <input type="checkbox" name="check" value="2. high"/> High
+            </label>
         </div>
-        <p><input type="submit" value="Submit"/></p>
+            </div>
+        <div class="row">
+            <p><input type="submit" value="Submit"/></p>
+        </div>
+
     </form>
 {% endblock %}

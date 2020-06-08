@@ -45,7 +45,7 @@ def res():
                    tools='pan, wheel_zoom, box_zoom, reset, save')
 
         # add a line renderer for each selected group
-        colors = ["navy", "green", "firebrick", "grey"]
+        colors = ["navy", "green", "firebrick", "black"]
         legend_list = []
         for i, result_type in enumerate(result):
             item = p.line(df.index, df[result_type], color=colors[i])
@@ -56,4 +56,4 @@ def res():
 
         plot_script, plot_div = components(p)
 
-        return render_template("res.html", bscript=plot_script, bdiv=plot_div)
+        return render_template("res.html", stockname=stock[0], bscript=plot_script, bdiv=plot_div)
