@@ -1,18 +1,8 @@
-<!doctype html>
-<html lang = "en">
-    <head>
-        <!-- Bokeh JS -->
-      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-1.4.0.min.js"
-            crossorigin="anonymous"></script>
-      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"
-              crossorigin="anonymous"></script>
-      <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-1.4.0.min.js"
-            crossorigin="anonymous"></script>
-    </head>
-   <body>
-    {{ bdiv | safe }}
-    <p>Update 4!</p>
+{% extends 'base.html' %}
 
-    {{ bscript | safe }}
-   </body>
-</html>
+{% block content %}
+{{ bdiv | safe }}
+
+{{ bscript | safe }}
+
+{% endblock %}
