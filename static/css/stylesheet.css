@@ -1,0 +1,5 @@
+.navbar-dark .nav-item.active .nav-link,
+.navbar-dark .nav-item:hover .nav-link {
+    color: #ffffff;
+    background-color: #000000
+}
