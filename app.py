@@ -39,7 +39,13 @@ def res():
 
         # convert data types in dataframe
         df.index = pd.to_datetime(df.index)
-        df = df.apply(pd.to_numeric, axis=1)
+        df = df.apply(pd.to_numeric, axis = 1)
+
+        # select data up to last year
+        trunc_df = pd.DataFrame(df.loc["2020-06":"2019-06"])
+
+        # add adjusted open price by calculating adjusted closing:closing price ratio
+        trunc_df['8. adjusted open'] = trunc_df['5. adjusted close'] / trunc_df['4. close'] * trunc_df['1. open']
 
         p = figure(plot_width=600, plot_height=400, title="Ticker Lookup for " + stock[0], x_axis_label='Date', x_axis_type='datetime',
                    tools='pan, wheel_zoom, box_zoom, reset, save')
@@ -48,7 +54,7 @@ def res():
         colors = ["navy", "green", "firebrick", "black"]
         legend_list = []
         for i, result_type in enumerate(result):
-            item = p.line(df.index, df[result_type], color=colors[i])
+            item = p.line(trunc_df.index, trunc_df[result_type], color=colors[i])
             legend_list.append((result_type[2:], [item]))
 
         legend = Legend(items=legend_list)
