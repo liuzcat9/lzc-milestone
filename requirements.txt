@@ -2,9 +2,6 @@ gunicorn==19.9.0
 requests==2.22.0
 pandas
 bokeh==2.0.2
-dill
 flask
-jinja2
 pip
-simplejson
 numpy
