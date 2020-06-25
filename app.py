@@ -3,6 +3,8 @@ import requests
 import pandas as pd
 import numpy as np
 
+from datetime import date, timedelta
+
 import bokeh
 from bokeh.plotting import figure, show
 from bokeh.embed import components
@@ -41,13 +43,16 @@ def res():
         df.index = pd.to_datetime(df.index)
         df = df.apply(pd.to_numeric, axis = 1)
 
-        # select data up to last year
-        trunc_df = pd.DataFrame(df.loc["2020-06":"2019-06"])
+        # select data up to 30 days ago (last month)
+        today_date = date.today()
+        date_30_before = date.today()-timedelta(days=30)
+        trunc_df = pd.DataFrame(df.loc[today_date:date_30_before])
+        print(trunc_df)
 
         # add adjusted open price by calculating adjusted closing:closing price ratio
         trunc_df['8. adjusted open'] = trunc_df['5. adjusted close'] / trunc_df['4. close'] * trunc_df['1. open']
 
-        p = figure(plot_width=600, plot_height=400, title="Ticker Lookup for " + stock[0], x_axis_label='Date', x_axis_type='datetime',
+        p = figure(plot_width=600, plot_height=400, title="Ticker Lookup for " + stock[0] + ": 1 Month", x_axis_label='Date', x_axis_type='datetime',
                    tools='pan, wheel_zoom, box_zoom, reset, save')
 
         # add a line renderer for each selected group
