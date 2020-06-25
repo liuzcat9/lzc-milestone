@@ -44,9 +44,9 @@ def res():
         df = df.apply(pd.to_numeric, axis = 1)
 
         # select data up to 30 days ago (last month)
-        today_date = date.today()
-        date_30_before = date.today()-timedelta(days=30)
-        trunc_df = pd.DataFrame(df.loc[today_date:date_30_before])
+        today_date_60_before = date.today()-timedelta(days=60)
+        date_30_before = today_date_60_before-timedelta(days=30)
+        trunc_df = pd.DataFrame(df.loc[today_date_60_before:date_30_before])
 
         # add adjusted open price by calculating adjusted closing:closing price ratio
         trunc_df['8. adjusted open'] = trunc_df['5. adjusted close'] / trunc_df['4. close'] * trunc_df['1. open']
