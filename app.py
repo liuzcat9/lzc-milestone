@@ -47,7 +47,6 @@ def res():
         today_date = date.today()
         date_30_before = date.today()-timedelta(days=30)
         trunc_df = pd.DataFrame(df.loc[today_date:date_30_before])
-        print(trunc_df)
 
         # add adjusted open price by calculating adjusted closing:closing price ratio
         trunc_df['8. adjusted open'] = trunc_df['5. adjusted close'] / trunc_df['4. close'] * trunc_df['1. open']
